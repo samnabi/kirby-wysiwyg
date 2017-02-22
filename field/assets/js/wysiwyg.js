@@ -68,7 +68,7 @@ WysiwygEditor = (function($, $field) {
                 hoverClass: 'over',
                 accept:     self.draggable,
                 drop:       function(event, element) {
-                    self.insertAtCaret(element.draggable.data('text'));
+                    this.append(element.draggable.data('text'));
                 }
             });
         }
