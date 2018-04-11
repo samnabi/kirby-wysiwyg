@@ -11,6 +11,7 @@ WysiwygEditor = (function($, $field) {
     this.buttons        = this.$editor.data('buttons').split(',');
     this.kirbyDragDrop  = this.$field.is('[data-dragdrop-kirby]');
     this.mediumDragDrop = this.$editor.is('[data-dragdrop-medium]');
+    this.anchorPreview  = this.$editor.is('[data-anchor-preview]');
     this.editor         = null;
 
     /**
@@ -48,7 +49,7 @@ WysiwygEditor = (function($, $field) {
                 forcePlainText: true,
             },
 
-            anchorPreview: false,
+            anchorPreview: self.anchorPreview,
 
             extensions: {
                 'mark': new MarkButton(),

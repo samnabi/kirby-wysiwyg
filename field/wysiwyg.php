@@ -78,6 +78,7 @@ class WysiwygField extends BaseField {
         ),
         'heading-style'  => 'atx',
         'double-returns' => false,
+        'anchor-preview' => false,
     );
 
     /**
@@ -128,6 +129,15 @@ class WysiwygField extends BaseField {
         if(!is_bool($this->mediumDragDrop))
         {
             $this->mediumDragDrop = false;
+        }
+
+        /*
+            (4) Load anchor preview configuration
+         */
+        $this->anchorPreview = c::get('field.wysiwyg.anchor-preview', false);
+        if(!is_bool($this->anchorPreview))
+        {
+            $this->anchorPreview = false;
         }
     }
 
@@ -196,6 +206,7 @@ class WysiwygField extends BaseField {
             'buttons'         => implode(',', $this->buttons),
             'double-returns'  => $this->doubleReturns,
             'dragdrop-medium' => $this->mediumDragDrop,
+            'anchor-preview' => $this->anchorPreview,
         ));
 
         /*
