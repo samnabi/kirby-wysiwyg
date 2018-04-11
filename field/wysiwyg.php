@@ -201,7 +201,7 @@ class WysiwygField extends BaseField {
         /*
             Parse markdown and set editor content
          */
-        $editor->html($this->convertToHtml($this->value() ?: ''));
+        $editor->html($this->convertToHtml($this->value() ?: '')); /////~
         return $editor;
     }
 
@@ -249,7 +249,9 @@ class WysiwygField extends BaseField {
 
     /**
      * Convert markdown to HTML
-     *
+     * 
+     * Setting setBreaksEnabled(true) means that single line breaks (i.e. Shift + Enter) are encoded as <br>. 
+     * 
      * @since 1.0.0
      *
      * @param  string $markdown
@@ -258,6 +260,7 @@ class WysiwygField extends BaseField {
     protected function convertToHtml($markdown)
     {
         $Parsedown = new Parsedown();
+        $Parsedown->setBreaksEnabled(true);
         return $Parsedown->text($markdown);
     }
 
