@@ -255,7 +255,8 @@ class WysiwygField extends BaseField {
             'strip_tags' => false,
             'header_style' => $this->headingStyle
         ));
-        return $converter->convert($html);
+        //return $converter->convert($html);
+        return $html; // Don't convert it!
     }
 
     /**
@@ -273,6 +274,7 @@ class WysiwygField extends BaseField {
         $Parsedown = new Parsedown();
         $Parsedown->setBreaksEnabled(true);
         return $Parsedown->text($markdown);
+        
     }
 
 }
